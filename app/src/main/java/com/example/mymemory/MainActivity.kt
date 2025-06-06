@@ -61,6 +61,18 @@ class MainActivity : AppCompatActivity() {
         }
         if(memoryGame.flipCard(position)) {
             Log.i(TAG, "Found a Match! Num Pairs found: ${memoryGame.numPairsFound}")
+
+            val color = ArgbEvaluator().evaluate(
+                memoryGame.numPairsFound.toFloat() / boardSize.getNumPairs(),
+                ContextCompat.getColor(this, R.color.color_progress_none),
+                ContextCompat.getColor(this, R.color.color_progress_full)
+            ) as Int
+            tvNumPairs.setTextColor(color)
+
+            tvNumPairs.text = "Pairs: ${memoryGame.numPairsFound} / ${boardSize.getNumPairs()}"
+            if(memoryGame.hasWonGame()) {
+                Snackbar.make(clRoot, "You won the game! Congratulations.", Snackbar.LENGTH_LONG).show()
+            }
         }
         adapter.notifyDataSetChanged()
     }
