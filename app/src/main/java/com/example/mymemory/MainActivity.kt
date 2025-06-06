@@ -137,6 +137,7 @@ class MainActivity : AppCompatActivity() {
                 Snackbar.make(clRoot, "You won the game! Congratulations.", Snackbar.LENGTH_LONG).show()
             }
         }
+        tvNumMoves.text = "Moves: ${memoryGame.getNumMoves()}"
         adapter.notifyDataSetChanged()
     }
 }
