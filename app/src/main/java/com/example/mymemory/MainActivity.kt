@@ -1,10 +1,18 @@
 package com.example.mymemory
 
+import android.animation.ArgbEvaluator
 import android.os.Bundle
 import android.util.Log
+import android.view.LayoutInflater
+import android.view.Menu
+import android.view.MenuItem
+import android.view.View
+import android.widget.RadioGroup
 import android.widget.TextView
+import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.constraintlayout.widget.ConstraintLayout
+import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.mymemory.models.BoardSize
@@ -14,7 +22,7 @@ import com.google.android.material.snackbar.Snackbar
 class MainActivity : AppCompatActivity() {
 
     companion object {
-        const val TAG = "MainActivity"
+        private const val TAG = "MainActivity"
     }
 
     private lateinit var clRoot: ConstraintLayout
@@ -24,7 +32,7 @@ class MainActivity : AppCompatActivity() {
 
     private lateinit var memoryGame: MemoryGame
     private lateinit var adapter: MemoryBoardAdapter
-    private var boardSize: BoardSize = BoardSize.HARD
+    private var boardSize: BoardSize = BoardSize.EASY
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -46,7 +54,7 @@ class MainActivity : AppCompatActivity() {
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when (item.itemId) {
-            R.id.mi_refresh -> {
+                    R.id.mi_refresh -> {
                 if(memoryGame.getNumMoves() > 0 && !memoryGame.hasWonGame()) {
                     // Warn the user
                     showAlertDialog("Quit your current Game?", null, View.OnClickListener {
@@ -56,6 +64,7 @@ class MainActivity : AppCompatActivity() {
                     // Setup the Game Again
                     setUpBoard()
                 }
+               return true
             }
 
             R.id.mi_new_size -> {
@@ -63,6 +72,7 @@ class MainActivity : AppCompatActivity() {
                 return true
             }
         }
+
         return super.onOptionsItemSelected(item)
     }
 
@@ -108,7 +118,7 @@ class MainActivity : AppCompatActivity() {
                 tvNumMoves.text = getString(R.string.medium_6_x_3)
             }
             BoardSize.HARD -> {
-                tvNumMoves.text = getString(R.string.hard_6_x_6)
+                tvNumMoves.text = getString(R.string.hard_4_x_6)
             }
         }
 
@@ -125,7 +135,7 @@ class MainActivity : AppCompatActivity() {
         rvBoard.layoutManager = GridLayoutManager(this, boardSize.getWidth())
 
         // Update the values on UI
-        tvNumMoves.text = "Moves: ${memoryGame.getNumMoves()}"
+//        tvNumMoves.text = "Moves: ${memoryGame.getNumMoves()}"
         tvNumPairs.setTextColor(ContextCompat.getColor(this, R.color.color_progress_none))
         tvNumPairs.text = "Pairs: ${memoryGame.numPairsFound} / ${boardSize.getNumPairs()}"
     }

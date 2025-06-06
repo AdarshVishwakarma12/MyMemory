@@ -8,6 +8,8 @@ class MemoryGame(private val boardSize: BoardSize) {
     var numPairsFound = 0
     var foundMatch: Boolean = false
 
+    private var numCardFlips = 0
+
     private var indexOfSingleSelectedCard: Int? = null
 
     init {
@@ -17,6 +19,7 @@ class MemoryGame(private val boardSize: BoardSize) {
     }
 
     internal fun flipCard(position: kotlin.Int): Boolean {
+        numCardFlips += 1
         val card = cards[position]
 
         // Three Cases
@@ -28,7 +31,7 @@ class MemoryGame(private val boardSize: BoardSize) {
             restoreCard()
             indexOfSingleSelectedCard = position
         } else {
-            var foundMatch = checkForMatch(indexOfSingleSelectedCard!!, position)
+            foundMatch = checkForMatch(indexOfSingleSelectedCard!!, position)
             indexOfSingleSelectedCard = null
         }
         card.isFaceUp = !card.isFaceUp
@@ -57,5 +60,9 @@ class MemoryGame(private val boardSize: BoardSize) {
 
     internal fun isCardFaceUp(position: Int): Boolean {
         return cards[position].isFaceUp
+    }
+
+    internal fun getNumMoves(): Int {
+        return numCardFlips / 2
     }
 }

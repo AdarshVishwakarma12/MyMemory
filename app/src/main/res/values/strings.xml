@@ -3,4 +3,7 @@
     <string name="hello_world">Hello World</string>
     <string name="pairs_0_4">Pairs: 0/4</string>
     <string name="moves">Moves:</string>
+    <string name="easy_4_x_2">Easy: 4 X 2</string>
+    <string name="medium_6_x_3">Medium: 6 X 3</string>
+    <string name="hard_4_x_6">Hard: 4 X 6</string>
 </resources>
