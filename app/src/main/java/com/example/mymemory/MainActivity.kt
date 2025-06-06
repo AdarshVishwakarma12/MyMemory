@@ -57,6 +57,11 @@ class MainActivity : AppCompatActivity() {
                     setUpBoard()
                 }
             }
+
+            R.id.mi_new_size -> {
+                showNewSizeDialog()
+                return true
+            }
         }
         return super.onOptionsItemSelected(item)
     }
