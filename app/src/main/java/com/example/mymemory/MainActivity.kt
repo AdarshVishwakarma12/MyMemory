@@ -47,6 +47,11 @@ class MainActivity : AppCompatActivity() {
         rvBoard.adapter = adapter
         rvBoard.setHasFixedSize(true)
         rvBoard.layoutManager = GridLayoutManager(this, boardSize.getWidth())
+
+        // Update the values on UI
+        tvNumMoves.text = "Moves: ${memoryGame.getNumMoves()}"
+        tvNumPairs.setTextColor(ContextCompat.getColor(this, R.color.color_progress_none))
+        tvNumPairs.text = "Pairs: ${memoryGame.numPairsFound} / ${boardSize.getNumPairs()}"
     }
 
     private fun updateGameWithFlip(position: Int) {
