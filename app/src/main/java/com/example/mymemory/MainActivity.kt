@@ -94,6 +94,19 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun setUpBoard() {
+
+        when (boardSize) {
+            BoardSize.EASY -> {
+                tvNumMoves.text = getString(R.string.easy_4_x_2)
+            }
+            BoardSize.MEDIUM -> {
+                tvNumMoves.text = getString(R.string.medium_6_x_3)
+            }
+            BoardSize.HARD -> {
+                tvNumMoves.text = getString(R.string.hard_6_x_6)
+            }
+        }
+
         memoryGame = MemoryGame(boardSize)
 
         adapter = MemoryBoardAdapter(this, boardSize, memoryGame.cards, object: MemoryBoardAdapter.CardClickListener {
