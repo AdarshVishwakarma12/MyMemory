@@ -1,6 +1,8 @@
 package com.example.mymemory.models
 
-enum class BoardSize(val numCards: Int) {
+import java.io.Serializable
+
+enum class BoardSize(val numCards: Int): Serializable {
     EASY(8),
     MEDIUM(18),
     HARD(24);

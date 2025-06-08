@@ -1,5 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <style name="Theme.MyMemory" parent="Theme.AppCompat.Light">
+        <!-- Customize colors if needed -->
+        <item name="colorPrimary">@color/purple_500</item>
+        <item name="colorPrimaryDark">@color/purple_700</item>
+        <item name="colorAccent">@color/teal_200</item>
 
-    <style name="Theme.MyMemory" parent="android:Theme.Material.Light.NoActionBar" />
+        <item name="android:textColorPrimary">@android:color/white</item>
+        <item name="android:actionBarStyle">@style/MyActionBar</item>
+    </style>
+
+    <style name="MyActionBar">@strings/MyMemory</style>
 </resources>
