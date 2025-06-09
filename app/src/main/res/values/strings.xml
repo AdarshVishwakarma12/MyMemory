@@ -7,4 +7,6 @@
     <string name="medium_6_x_3">Medium: 6 X 3</string>
     <string name="hard_4_x_6">Hard: 4 X 6</string>
     <string name="MyMemory">My Memory</string>
+    <string name="save_button">Save</string>
+    <string name="game_name">Game Name</string>
 </resources>

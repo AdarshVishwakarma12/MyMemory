@@ -1,7 +1,6 @@
 package com.example.mymemory
 
 import android.animation.ArgbEvaluator
-import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
@@ -55,8 +54,14 @@ class MainActivity : AppCompatActivity() {
         createActivityLauncher = registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->
             if (result.resultCode == RESULT_OK) {
                 // Handle result if needed
+                Log.i(TAG, "got result back")
             }
         }
+
+        // for Development
+        val intent = Intent(this, CreateActivity::class.java)
+        intent.putExtra(EXTRA_BOARD_SIZE, BoardSize.MEDIUM)
+        createActivityLauncher.launch(intent)
 
         setUpBoard()
     }
